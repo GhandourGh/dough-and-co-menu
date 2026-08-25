@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  /* One radius for every surface in the app. Controls stay fully round. */
+  --radius-card: 1.5rem;
+}
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #2b2b2b;
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+button, input, textarea { font: inherit; }
+button, a, summary { -webkit-tap-highlight-color: transparent; }
+summary::-webkit-details-marker { display: none; }
+::selection { background: #ffedf0; color: #2b2b2b; }
+
+.category-scroll {
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slide-right-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-left-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slide-left-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-right-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes feature-pop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes swap-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes pop-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.96); }
+}
+
+.motion-rise { animation: rise 200ms ease-out both; }
+.motion-fade { animation: fade-in 180ms ease-out both; }
+.motion-pop { animation: pop-in 180ms ease-out both; }
+.motion-feature-pop { animation: feature-pop 550ms cubic-bezier(0.22, 0.68, 0.32, 1) both; }
+.motion-swap { animation: swap-in 260ms ease-out both; }
+.dialog-overlay[data-state="open"] { animation: fade-in 180ms ease-out both; }
+.dialog-overlay[data-state="closed"] { animation: fade-out 150ms ease-out both; }
+.drawer-left[data-state="open"] { animation: slide-right-in 200ms ease-out both; }
+.drawer-left[data-state="closed"] { animation: slide-left-out 150ms ease-out both; }
+.drawer-right[data-state="open"] { animation: slide-left-in 200ms ease-out both; }
+.drawer-right[data-state="closed"] { animation: slide-right-out 150ms ease-out both; }
+.dialog-panel[data-state="open"] { animation: pop-in 180ms ease-out both; }
+.dialog-panel[data-state="closed"] { animation: pop-out 150ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
